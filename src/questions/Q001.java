@@ -5,23 +5,25 @@ import java.util.Collection;
 import java.util.TreeSet;
 
 /*
-Write a return method that check if a string is build out
+Write a return method that checks if a string is build out
 of the same letters as another string.
-Ex: same("abc","cab") =>true , same("abc","abb") = > false
+Ex: same("abc","cab") =>true , same("abc","abcc") = > false
  */
 public class Q001 {
     public static void main(String[] args) {
-        System.out.println(same("abc","cab"));
-        System.out.println(same("abc","abb"));
+//        System.out.println(same("abc","cab"));
+//        System.out.println(same("abc","abb"));
+//
+//        System.out.println(same2("abc","cab"));
+//        System.out.println(same2("abc","abb"));
+//
+//        System.out.println(same3("abc","cab"));
+//        System.out.println(same3("abc","abb"));
+//
+//        System.out.println(same4("abc","cab"));
+//        System.out.println(same4("abc","abb"));
 
-        System.out.println(same2("abc","cab"));
-        System.out.println(same2("abc","abb"));
-
-        System.out.println(same3("abc","cab"));
-        System.out.println(same3("abc","abb"));
-
-        System.out.println(same4("abc","cab"));
-        System.out.println(same4("abc","abb"));
+        System.out.println(same4("aabc","abbc"));//false
     }
     public static boolean same(String s1,String s2){
         if (s1==null || s2==null) {
@@ -48,11 +50,12 @@ public class Q001 {
         if (s1.length()!=s2.length()){
             return false;
         }
+
         while(s2.length()>0 && s1.length()>0){
-            if (s2.contains(s1.subSequence(0,1))){
-                s2 = s2.replace(s1.subSequence(0,1),"");
-                s1 = s1.substring(1);
+            if (s2.contains(s1.substring(0,1))) {
+                s2 = s2.replace(s1.substring(0, 1), "");//
             }
+            s1 = s1.substring(1);
         }
         return s1.length()==s2.length();
     }
@@ -70,18 +73,6 @@ public class Q001 {
 
         return Arrays.equals(s1chars,s2chars);
     }
-    public static boolean same4(String s1,String s2){
-        if (s1==null || s2==null) {
-            return false;
-        }
-        if (s1.length()!=s2.length()){
-            return false;
-        }
-        TreeSet<String> t1 = new TreeSet<String>(Arrays.asList(s1.split("")));
-        TreeSet<String> t2 = new TreeSet<String>(Arrays.asList(s2.split("")));
 
-        return t1.toString().equals(t2.toString());
-
-    }
 
 }
