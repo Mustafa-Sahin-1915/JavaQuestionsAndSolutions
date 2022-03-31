@@ -23,7 +23,7 @@ public class Q001 {
 //        System.out.println(same4("abc","cab"));
 //        System.out.println(same4("abc","abb"));
 
-        System.out.println(same4("aabc","abbc"));//false
+        System.out.println(same2("aabc","abbc"));//false
     }
     public static boolean same(String s1,String s2){
         if (s1==null || s2==null) {
@@ -53,7 +53,7 @@ public class Q001 {
 
         while(s2.length()>0 && s1.length()>0){
             if (s2.contains(s1.substring(0,1))) {
-                s2 = s2.replace(s1.substring(0, 1), "");//
+                s2 = s2.replaceFirst(s1.substring(0, 1), "");//
             }
             s1 = s1.substring(1);
         }
