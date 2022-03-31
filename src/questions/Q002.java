@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /*
-Write a return method taht can remove the duplicated values
+Write a return method that can remove the duplicated values
 from String
 Ex: removeDup("AAAABBBCCC") = "ABC"
  */
@@ -21,6 +21,7 @@ public class Q002 {
         StringBuilder snew = new StringBuilder();
         char schars[] = s.toCharArray();
         for (int i=0;i<schars.length;i++){
+
             if (snew.indexOf(String.valueOf(schars[i]))==-1){
                 snew.append(schars[i]);
             }
@@ -52,10 +53,12 @@ public class Q002 {
         if (s==null) return null;
 
         HashSet<String> uniqueChars = new HashSet<String>(Arrays.asList(s.split("")));
+
         StringBuilder sb = new StringBuilder();
         for (String w:uniqueChars){
             sb.append(w);
         }
+
         return sb.toString();
     }
 }
