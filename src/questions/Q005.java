@@ -3,8 +3,10 @@ package questions;
 import java.util.*;
 
 /*
+
 Write a return method that can find the frequency of characters
 frequencyOfChars("AAABBCDD") =>A3B2C1D2
+
  */
 public class Q005 {
     public static void main(String[] args) {
@@ -32,14 +34,14 @@ public class Q005 {
     }
     public static String frequencyOfChars2(String s){
         if (s==null) return null;
-        List<String> listOfChars = Arrays.asList(s.split(""));
+        List<String> listOfChars = Arrays.asList(s.split("")); //AAABBCDD
         String result ="";
         int frequency=0;
         for(String w:listOfChars){
+            if (result.contains(w)) continue;
             frequency = Collections.frequency(listOfChars,w);
-            if (!result.contains(w)){
-                result +=(w + frequency);
-            }
+            result +=(w + frequency);
+
         }
         return result;
     }
@@ -55,6 +57,7 @@ public class Q005 {
             }
         }
         StringBuilder sb = new StringBuilder();
+
         for(Map.Entry<Character,Integer> w:freqOfChars.entrySet()){
             sb.append(w.getKey());
             sb.append(w.getValue());
@@ -62,3 +65,4 @@ public class Q005 {
         return sb.toString();
     }
 }
+

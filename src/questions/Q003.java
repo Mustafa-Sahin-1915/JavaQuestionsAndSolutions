@@ -3,10 +3,10 @@ package questions;
 import java.util.Comparator;
 
 /*
-Writea return method that can reverse String
+Write a return method that can reverse String
 ex:reversed("ABCD") => DCBA
+*/
 
- */
 public class Q003 {
     public static void main(String[] args) {
         System.out.println(reverse("ABCD"));
@@ -16,10 +16,13 @@ public class Q003 {
     }
     public static String reverse(String s){
         StringBuilder sb =new StringBuilder();
+        String result = "";
         for (int i = s.length()-1; i >=0 ; i--) {
             sb.append(s.charAt(i));
+            //result+=s.charAt(i);
         }
         return sb.toString();
+        // return result;
     }
     public static String reverse2(String s){
         StringBuilder sb =new StringBuilder(s);

@@ -1,6 +1,7 @@
 package questions;
 
 /*
+
 write a return method that can verify if a password is valid or not
 requirements:
 -password must be at least 6 characters and should not contain space
@@ -24,9 +25,11 @@ public class Q006 {
         System.out.println(isValidPassword3("123abC#$%"));//true
     }
 
-    public static boolean isValidPassword(String s) {
+    public static boolean isValidPassword(String s) { //123abc#$%
         if (s == null) return false;
-        if (s.length() < 6 || s.contains(" ")) return false;
+        if (s.length() < 6) return false;
+        if (s.contains(" "))return false;
+
         int count = 0;
         char ch;
         int uppercaseCount = 0;
@@ -36,9 +39,9 @@ public class Q006 {
         for (int i = 0; i < s.length(); i++) {
             ch = s.charAt(i);
             if (ch >= 'a' && ch <= 'z') lowercaseCount++;
-            if (ch >= 'A' && ch <= 'Z') uppercaseCount++;
-            if (ch >= '0' && ch <= '9') digitCount++;
-            if ((ch >= 33 && ch <= 47) ||
+            else if (ch >= 'A' && ch <= 'Z') uppercaseCount++;
+            else if (ch >= '0' && ch <= '9') digitCount++;
+            else if ((ch >= 33 && ch <= 47) ||
                     (ch >= 58 && ch <= 64) ||
                     (ch >= 91 && ch <= 96) ||
                     (ch >= 123 && ch <= 126)) specialCount++;
@@ -50,9 +53,8 @@ public class Q006 {
 
     }
 
-    public static boolean isValidPassword2(String s) {
+    public static boolean isValidPassword2(String s) {//123abc#$%
         if (s == null) return false;
-        if (s.length() < 6 || s.contains(" ")) return false;
         // \\w:[0-9a-zA-Z]   \\s: any white space
         // except of \\w and \\s  are called special characters
 
@@ -66,21 +68,24 @@ public class Q006 {
         }
     }
 
-    public static boolean isValidPassword3(String s) {
+    public static boolean isValidPassword3(String s) { //123abc#$%
         if (s == null) return false;
-        if (s.length() < 6 || s.contains(" ")) return false;
+        if (s.length() < 6) return false;
+        if (s.contains(" "))return false;
 
         String upperCaseRegex="(.*[A-Z].*)";
         String lowerCaseRegex="(.*[a-z].*)";
         String digitRegex="(.*[0-9].*)";
         String specialRegex="(.*[^\\w\\s].*)";
 
-        if (!s.matches(upperCaseRegex))return false;
+
+      if (!s.matches(upperCaseRegex))return false;
         if (!s.matches(lowerCaseRegex))return false;
-        if (!s.matches(digitRegex))return false;
-        if (!s.matches(specialRegex))return false;
+       if (!s.matches(digitRegex))return false;
+       if (!s.matches(specialRegex))return false;
 
         return true;
     }
+
 
 }

@@ -4,7 +4,7 @@ import java.util.*;
 
 /*
 Write a return method  that can find the unique characters from the String
-Ex:unique("AAAABBBCCCDEF") => DEF
+Ex:unique("AAAABBBCCCDEF") => "DEF"
  */
 public class Q004 {
     public static void main(String[] args) {
@@ -43,12 +43,12 @@ public class Q004 {
         }
         return result;
     }
-    public static String unique3(String s){
+    public static String unique3(String s){ //AAAABBBCCCDEF
         if (s==null) return null;
         StringBuilder sb = new StringBuilder();
         char schars[] = s.toCharArray();
         int count =0;
-        for (int i = 0; i < schars.length; i++) {
+        for (int i = 0; i < schars.length; i++) {   // time complexity of code : O(n^2)
             count=0;
             for (int j = 0; j <schars.length ; j++) {
                 if (schars[i]==schars[j]){
@@ -64,12 +64,22 @@ public class Q004 {
     public static String unique4(String s){
         if (s==null) return null;
         StringBuilder sb = new StringBuilder();
-        List<String> charList= Arrays.asList(s.split(""));
+
+        List<String> charList= Arrays.asList(s.split(""));//AAAABBBCCCDEF
         for (String w:charList) {
             if (Collections.frequency(charList,w)==1){
                 sb.append(w);
             }
         }
         return sb.toString();
+    }
+    public static String unique5(String s){
+        String result = "";
+        for (int i = 0; i < s.length(); i++) {
+            if (s.indexOf(s.charAt(i))==s.lastIndexOf(s.charAt(i))){
+               result += s.charAt(i);
+            }
+        }
+        return result;
     }
 }
