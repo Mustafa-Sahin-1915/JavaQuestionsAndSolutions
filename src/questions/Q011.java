@@ -8,6 +8,7 @@ multiple of both 3 and 5, print "FINRA" instead of number.
 public class Q011 {
     public static void main(String[] args) {
         printNumbers(30);
+        printNumbers2(30);
     }
     public static void printNumbers(int n){
         for (int i = 1; i < n+1; i++) {
@@ -17,6 +18,21 @@ public class Q011 {
                 System.out.println("FIN");
             }else if(i%5==0){
                 System.out.println("RA");
+            }else{
+                System.out.println(i);
+            }
+        }
+    }
+    public static void printNumbers2(int n){
+        for (int i = 1; i < n+1; i++) {
+            if (i%3==0 || i%5==0){
+                if (i%3==0){
+                    System.out.print("FIN");
+                }
+                if (i%5==0){
+                    System.out.println("RA");
+                }
+                System.out.println();
             }else{
                 System.out.println(i);
             }
