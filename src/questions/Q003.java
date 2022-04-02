@@ -1,5 +1,6 @@
 package questions;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 /*
@@ -13,6 +14,8 @@ public class Q003 {
         System.out.println(reverse2("ABCD"));
         System.out.println(reverse3("ABCD"));
         System.out.println(reverse4("ABCD"));
+        System.out.println(reverse5("ABCD"));
+
     }
     public static String reverse(String s){
         StringBuilder sb =new StringBuilder();
@@ -39,5 +42,8 @@ public class Q003 {
     }
     public static String reverse4(String s){
         return new StringBuffer(s).reverse().toString();
+    }
+    public static String reverse5(String s){
+        return Arrays.stream(s.split("")).reduce("",(t,u)->u+t).toString();
     }
 }
