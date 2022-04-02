@@ -9,7 +9,7 @@ print all permutation from the given characters
  */
 public class Q015 {
     public static void main(String[] args) {
-        String s = "ABC";
+        String s = "ABCD";
         permutationGenerate2(s);
     }
     public static void permuteString(String s){
@@ -55,9 +55,9 @@ public class Q015 {
 
     public static int[] click(int[] counter){
         int a;
-        int b=0;
+        int b=1;
         for (int i = counter.length-1; i >=0 ; i--) {
-            a=(counter[i]+b+1)%counter.length;
+            a=(counter[i]+b)%counter.length;
             counter[i]= a;
             if (a==0){
                 b=1;
