@@ -1,10 +1,7 @@
 package questions;
 
-import java.math.BigInteger;
-import java.util.Arrays;
-
 /*
-Given an array of n characters  n=5
+Given an array of n characters  ex:"ABCD" n=4
 print all permutation from the given characters
  */
 public class Q015 {
