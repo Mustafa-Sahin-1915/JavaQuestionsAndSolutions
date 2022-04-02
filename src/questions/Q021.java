@@ -19,6 +19,9 @@ public class Q021 {
     public static void main(String[] args) {
         String str = "abcdefg";
         permute(str,2,4);
+        System.out.println("------------------------");
+        permute2(str,2,4);
+
     }
     public static void permute(String s, int startindex,int endindex){
         List<String> listOfPermutations;
@@ -94,5 +97,25 @@ public class Q021 {
             sb.append(s.charAt(w));
         }
         return sb.toString();
+    }
+    //------------------------------------------------
+    //recursive version of permutation
+    public static String swapLetters(String str,int startIndex,int endIndex){
+        char[] chars = str.toCharArray();
+        char temp = chars[startIndex];
+        chars[startIndex] = chars[endIndex];
+        chars[endIndex] = temp;
+        return String.valueOf(chars);
+    }
+    public static void permute2(String s,int startIndex,int endIndex){
+        if (startIndex==endIndex){
+            System.out.println(s);
+        }else{
+            for (int i = startIndex; i <= endIndex; i++) {
+                s=swapLetters(s,startIndex,i);
+                permute(s,startIndex+1,endIndex);
+                s=swapLetters(s,startIndex,i);
+            }
+        }
     }
 }
