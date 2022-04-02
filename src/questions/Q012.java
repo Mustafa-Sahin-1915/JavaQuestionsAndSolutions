@@ -18,4 +18,9 @@ public class Q012 {
         a+=b-(b=a);
         System.out.println(a+" "+b);
     }
+    public static void swap3(int a, int b){
+        b = a+b - (a=b);
+        System.out.println(a+" "+b);
+    }
+
 }
