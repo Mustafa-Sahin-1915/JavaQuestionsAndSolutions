@@ -1,6 +1,7 @@
 package questions;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /*
 Write a return method  that can find the unique characters from the String
@@ -12,6 +13,8 @@ public class Q004 {
         System.out.println(unique2("AAAABBBCCCDEF"));
         System.out.println(unique3("AAAABBBCCCDEF"));
         System.out.println(unique4("AAAABBBCCCDEF"));
+        System.out.println(unique5("AAAABBBCCCDEF"));
+        System.out.println(unique6("AAAABBBCCCDEF"));
     }
     public static String unique(String s){
         if (s==null) return null;
@@ -81,5 +84,16 @@ public class Q004 {
             }
         }
         return result;
+    }
+    public static String unique6(String s){
+        if (s==null) return null;
+        HashMap<String,Integer> counts = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            counts.put(s.substring(i,i+1),counts.getOrDefault(s.substring(i,i+1),0)+1);
+        }
+        return counts.entrySet().stream().
+                filter(t->t.getValue()==1).
+                map(t->t.getKey()).
+                collect(Collectors.joining()).toString();
     }
 }

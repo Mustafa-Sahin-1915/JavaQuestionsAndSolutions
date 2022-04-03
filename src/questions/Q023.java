@@ -19,7 +19,6 @@ public class Q023 {
         for(String w:str.split("")) {
             nums.put(w, nums.getOrDefault(w, 0) + 1);
         }
-
         return nums;
     }
 }
