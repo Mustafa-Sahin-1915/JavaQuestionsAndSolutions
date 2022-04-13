@@ -16,15 +16,19 @@ public class Q004 {
         System.out.println(unique5("AAAABBBCCCDEF"));
         System.out.println(unique6("AAAABBBCCCDEF"));
     }
+
+
     public static String unique(String s){
         if (s==null) return null;
         HashMap<Character,Integer> counts = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
-            if (counts.get(s.charAt(i))==null){
-                counts.put(s.charAt(i),1);
-            }else{
-                counts.put(s.charAt(i),counts.get(s.charAt(i))+1);
-            }
+
+//            if (counts.get(s.charAt(i))==null){
+//                counts.put(s.charAt(i),1);// 'A' :1
+//            }else{
+//                counts.put(s.charAt(i),counts.get(s.charAt(i))+1);
+//            }
+            counts.put(s.charAt(i), counts.getOrDefault(s.charAt(i),0)+1);
         }
         StringBuilder sb = new StringBuilder();
         for (Map.Entry<Character,Integer> w: counts.entrySet()){
@@ -33,20 +37,21 @@ public class Q004 {
             }
         }
         return sb.toString();
+
     }
     public static String unique2(String s){
         String result="";
         while(s.length()>0){
-            if (s.substring(1).contains(s.substring(0,1))){
+            if (s.substring(1).contains(s.substring(0,1))){//
                 s = s.replaceAll(s.substring(0,1),"");
             }else{
-                result +=s.substring(0,1);
-                s = s.substring(1);
+                result +=s.substring(0,1);  // result = "DEF"
+                s = s.substring(1); //""
             }
         }
         return result;
     }
-    public static String unique3(String s){ //AAAABBBCCCDEF
+    public static String unique3(String s){
         if (s==null) return null;
         StringBuilder sb = new StringBuilder();
         char schars[] = s.toCharArray();
@@ -67,13 +72,15 @@ public class Q004 {
     public static String unique4(String s){
         if (s==null) return null;
         StringBuilder sb = new StringBuilder();
+                                                    //ArrayList<String>
+        List<String> charList= Arrays.asList(s.split(""));//["A","A","A","A","B","B","B","C","C","C","D","E,"F"]
+        for (String w:charList) {//["A","A","A","A","B","B","B","C","C","C","D","E,"F"]
 
-        List<String> charList= Arrays.asList(s.split(""));//AAAABBBCCCDEF
-        for (String w:charList) {
             if (Collections.frequency(charList,w)==1){
                 sb.append(w);
             }
         }
+
         return sb.toString();
     }
     public static String unique5(String s){
@@ -91,9 +98,11 @@ public class Q004 {
         for (int i = 0; i < s.length(); i++) {
             counts.put(s.substring(i,i+1),counts.getOrDefault(s.substring(i,i+1),0)+1);
         }
+        //["A","A","A","A","B","B","B","C","C","C","D","E,"F"]
+        //["D","E","F"]  "DEF"
         return counts.entrySet().stream().
                 filter(t->t.getValue()==1).
                 map(t->t.getKey()).
-                collect(Collectors.joining()).toString();
+                collect(Collectors.joining()).toString(); //"DEF"
     }
 }
