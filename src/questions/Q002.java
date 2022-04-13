@@ -2,13 +2,13 @@ package questions;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Set;
 
 /*
 Write a return method that can remove the duplicated values
 from String
 Ex: removeDup("AAAABBBCCC") = "ABC"
  */
+
 public class Q002 {
     public static void main(String[] args) {
         System.out.println(removeDup("AAAABBBCCC"));
@@ -16,9 +16,10 @@ public class Q002 {
         System.out.println(removeDup3("AAAABBBCCC"));
         System.out.println(removeDup4("AAAABBBCCC"));
     }
-    public static String removeDup(String s){
+
+    public static String removeDup(String s){//"AAAABBBCCC"
         if (s==null) return null;
-        StringBuilder snew = new StringBuilder();
+        StringBuilder snew = new StringBuilder();//"ABC"
         char schars[] = s.toCharArray();
         for (int i=0;i<schars.length;i++){
 
@@ -49,16 +50,18 @@ public class Q002 {
         }
         return result;
     }
-    public static String removeDup4(String s){
+    public static String removeDup4(String s){//"AAAABBBCCC"
         if (s==null) return null;
+        //char[] chars = [A,A,A,A,B,B,B,C,C,C]
+        HashSet<String> uniqueChars = new HashSet<String>(Arrays.asList(s.split("")));//{'A','B','C'}=>"ABC"
 
-        HashSet<String> uniqueChars = new HashSet<String>(Arrays.asList(s.split("")));
-
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(); //[A][B][C][][][][][][][]
+        String ss="";
         for (String w:uniqueChars){
             sb.append(w);
+            //ss = ss + w;
         }
 
-        return sb.toString();
+        return sb.toString(); //"ABC" return ss;
     }
 }
