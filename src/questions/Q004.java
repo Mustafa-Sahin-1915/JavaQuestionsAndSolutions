@@ -112,7 +112,7 @@ public class Q004 {
         List<String> arr = Arrays.asList(s.split(""));
         String result = arr.stream().map(t->{
             if(s.indexOf(t)==s.lastIndexOf(t)) return t;
-            else return "";}).filter(t->!t.equals("")).collect(Collectors.joining("")).toString();
+            else return null;}).filter(t->t!=null).collect(Collectors.joining("")).toString();
         return result;
     }
 }
