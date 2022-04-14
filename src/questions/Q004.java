@@ -106,7 +106,7 @@ public class Q004 {
                 map(t->t.getKey()).
                 collect(Collectors.joining()).toString(); //"DEF"
     }
-    // This is Serjans solution.
+    // This is Serjans solution with Lambda.
     public static String unique7(String s){
         if (s==null) return null;
         List<String> arr = Arrays.asList(s.split(""));
