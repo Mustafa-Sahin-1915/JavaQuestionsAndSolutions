@@ -15,6 +15,7 @@ public class Q004 {
         System.out.println(unique4("AAAABBBCCCDEF"));
         System.out.println(unique5("AAAABBBCCCDEF"));
         System.out.println(unique6("AAAABBBCCCDEF"));
+        System.out.println(unique7("AAAABBBCCCDEF"));
     }
 
 
@@ -104,5 +105,14 @@ public class Q004 {
                 filter(t->t.getValue()==1).
                 map(t->t.getKey()).
                 collect(Collectors.joining()).toString(); //"DEF"
+    }
+    // This is Serjans solution.
+    public static String unique7(String s){
+        if (s==null) return null;
+        List<String> arr = Arrays.asList(s.split(""));
+        String result = arr.stream().map(t->{
+            if(s.indexOf(t)==s.lastIndexOf(t)) return t;
+            else return "";}).filter(t->!t.equals("")).collect(Collectors.joining("")).toString();
+        return result;
     }
 }
