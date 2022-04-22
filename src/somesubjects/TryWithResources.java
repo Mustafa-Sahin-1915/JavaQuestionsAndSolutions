@@ -8,8 +8,9 @@ import java.util.Scanner;
 /*
 We use try-with-resources try-catch block to auto-close resources
 
-you can define your auto-completing resources as follows:
+you can define your auto-closing resources as follows:
 AutoCloseable interface is used for that task
+
 public class MyResource implements AutoCloseable {
     @Override
     public void close() throws Exception {
@@ -24,19 +25,28 @@ public class TryWithResources {
        readDataFromFile2();
     }
     public static void writeDataToFile(){
-        try(PrintWriter writer = new PrintWriter(new File("test.txt"))){
-            writer.println("Hello World");
+        try(PrintWriter writer = new PrintWriter(new File("test.csv"))){
+
+            writer.println("aaa,bbbb,ccc");
+
         }catch (Exception e){
             e.printStackTrace();
-        }// writer resources is automatically closed with close() method after try-catch
+        }
+        // writer resources is automatically closed with close() method after try-catch
+
     }
-    /* This is a classical wat to use resource and close it*/
+    /* This is a classical what to use resource and close it*/
     public static void readDataFromFile1(){
         Scanner scanner = null;
         try {
-            scanner = new Scanner(new File("test.txt"));
+            scanner = new Scanner(new File("test.csv"));
             while (scanner.hasNext()) {
-                System.out.println(scanner.nextLine());
+                String line = scanner.nextLine();
+                String[] lineparsed = line.split(",");
+                for (String w:lineparsed){
+                    System.out.println(w);
+                }
+
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -48,7 +58,7 @@ public class TryWithResources {
     }
     /* This method is the corresponding version of readDataFromFile1()*/
     public static void readDataFromFile2(){
-        try (Scanner scanner = new Scanner(new File("test.txt"))) {
+        try (Scanner scanner = new Scanner(new File("test.csv"))) {
             while (scanner.hasNext()) {
                 System.out.println(scanner.nextLine());
             }
@@ -56,5 +66,6 @@ public class TryWithResources {
             e.printStackTrace();
         }
     }
+
 
 }
